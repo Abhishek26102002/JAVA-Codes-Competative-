@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class _152 {
+    public static int maxProduct(int[] nums) {
+        int pre = 1, suff = 1;
+        int ans = Integer.MIN_VALUE;
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            if (pre == 0) {
+                pre = 1;
+            }
+            if (suff == 0) {
+                suff = 1;
+            }
+            pre = pre * nums[i];
+            suff = suff * nums[n - i - 1];
+            ans = Math.max(ans, Math.max(pre, suff));
+        }
+
+        return ans;
+    }
+
+    public static void main(String args[]) {
+        int[] arr = { 3, -1, 4 };
+        maxProduct(arr);
+    }
+}

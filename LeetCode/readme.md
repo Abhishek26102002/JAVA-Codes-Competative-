@@ -1,0 +1,1 @@
+class names are Q. no in leetcode ,i.e easy to find
