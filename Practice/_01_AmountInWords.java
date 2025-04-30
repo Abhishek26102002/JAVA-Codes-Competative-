@@ -1,52 +1,41 @@
-// package AmountInWords;
-
 import java.util.*;
 
 public class _01_AmountInWords {
+    public static String solve(int num) {
+        if (num == 0)
+            return "zero";
 
-    private static  String[] ONES = new String[] { "", "one", "two", "three", "four", "five", "six", "seven","eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen","eighteen", "nineteen" };
+        String[] ones = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
 
-    private static  String[] TENS = new String[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty","seventy", "eighty", "ninety" };
+        String[] tens = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-    public String convertAmountToWords(int amount) {
-        if (amount < 0 || amount > 100000) {
-            throw new IllegalArgumentException("Amount must be between 0 and 100000");
+        StringBuilder s = new StringBuilder();
+
+        if (num >= 1000) {
+            s.append(ones[num / 1000]).append(" thousand ");
+            num %= 1000;
         }
 
-        String words = "";
-
-        // Thousands place
-        int thousands = amount / 1000;
-        if (thousands > 0) {
-            words += ONES[thousands] + " thousand";
-            amount %= 1000;
+        if (num >= 100) {
+            s.append(ones[num / 100]).append(" hundred ");
+            num %= 100;
         }
 
-        // Hundreds place
-        int hundreds = amount / 100;
-        if (hundreds > 0) {
-            words += " " + ONES[hundreds] + " hundred";
-            amount %= 100;
+        if (num >= 20) {
+            s.append(tens[num / 10]).append(" ");
+            num %= 10;
         }
 
-        // Tens place
-        int tens = amount / 10;
-        if (tens > 0) {
-            words += " " + TENS[tens];
-            amount %= 10;
+        if (num > 0) {
+            s.append(ones[num]).append(" ");
         }
 
-        // Ones place
-        if (amount > 0) {
-            words += " " + ONES[amount];
-        }
-
-        return words;
+        return s.toString().trim();
     }
 
-    public static void main(String[] args) {
-        _01_AmountInWords converter = new _01_AmountInWords();
-        String words = converter.convertAmountToWords(12345);
-        System.out.println(words);
+    public static void main(String args[]) {
+        int num = 1010;
+        System.out.println(solve(num)); // Output: one thousand ten
     }
 }

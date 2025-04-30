@@ -1,1 +1,1 @@
-class names are Q. no in leetcode ,i.e easy to find
+class names are Q. no in leetcode ,so that they are easy to find

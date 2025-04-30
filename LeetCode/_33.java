@@ -2,32 +2,32 @@ import java.util.*;
 
 public class _33 {
 
-    public static int search(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
+    static public int search(int[] nums, int target) {
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        int i = 0, j = nums.length - 1;
 
-            if (nums[mid] == target) {
-                return mid;
-            }
+        while (i <= j) { // Use <= to ensure the last element is checked
+            int m = i + (j - i) / 2;
 
-            if (nums[low] <= nums[mid]) {
-                if (nums[low] <= target && target < nums[mid]) {
-                    high = mid - 1;
+            if (nums[m] == target)
+                return m;
+
+            // Determine which half is sorted
+            if (nums[i] <= nums[m]) { // Left half is sorted
+                if (nums[i] <= target && target < nums[m]) {
+                    j = m - 1; // Search in left half
                 } else {
-                    low = mid + 1;
+                    i = m + 1; // Search in right half
                 }
-            } else {
-                if (nums[mid] < target && target <= nums[high]) {
-                    low = mid + 1;
+            } else { // Right half is sorted
+                if (nums[m] < target && target <= nums[j]) {
+                    i = m + 1; // Search in right half
                 } else {
-                    high = mid - 1;
+                    j = m - 1; // Search in left half
                 }
             }
         }
-        return -1;
+        return -1; // Target not found
     }
 
     public static void main(String args[]) {
