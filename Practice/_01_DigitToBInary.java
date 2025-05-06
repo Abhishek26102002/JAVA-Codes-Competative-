@@ -12,6 +12,16 @@ public class _01_DigitToBInary {
         return a * power(a, b - 1);
     }
 
+    // or
+    // note this will return a String
+    public static String solve(int num) {
+
+        return Integer.toBinaryString(num);
+
+        // this will return int
+        // return Integer.parseInt(Integer.toBinaryString(num));
+    }
+
     public static void main(String args[]) {
 
         // System.out.println(power(3, 0));

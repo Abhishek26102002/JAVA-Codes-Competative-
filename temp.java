@@ -1,19 +1,33 @@
 import java.util.*;
 
 public class temp {
-    public static ArrayList<Integer> solve(int num) {
-        ArrayList<Integer> arr = new ArrayList<>();
+    public static void solve(int[] arr) {
 
-        while (num != 0) {
-            int rem = num % 10;
-            arr.add(rem);
-            num /= 10;
-        }
-        return arr;
     }
 
     public static void main(String args[]) {
-        int num = 1010;
-        System.out.println(solve(num));
+        int n = 5;
+        // ****
+        // * *
+        // * *
+        // * *
+        // ****
+        int cnt = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                if (i == 1 || i == 4) {
+                    System.out.print("*");
+                } else {
+                    if (j == 1 || j == 4) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
+                }
+
+            }
+            System.out.println();
+        }
+
     }
 }
